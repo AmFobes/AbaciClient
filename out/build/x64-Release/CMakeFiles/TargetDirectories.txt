@@ -1,4 +1,0 @@
-P:/C++/ICS4U/Final/Abaci Client/out/build/x64-Release/CMakeFiles/rebuild_cache.dir
-P:/C++/ICS4U/Final/Abaci Client/out/build/x64-Release/CMakeFiles/Abaci_Client.dir
-P:/C++/ICS4U/Final/Abaci Client/out/build/x64-Release/CMakeFiles/edit_cache.dir
-P:/C++/ICS4U/Final/Abaci Client/out/build/x64-Release/CMakeFiles/Abaci_Client_autogen.dir

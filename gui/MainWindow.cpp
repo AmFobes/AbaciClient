@@ -124,7 +124,7 @@ void MainWindow::workReady(double start, double end) {
 	updateWorkStatus("Preparing to work");
 	size_t size = 0;
 	if(workArray == nullptr)
-	 workArray = new double[(end-start) / 2];
+	 workArray = new double[(size_t)(end-start) / 2];
 	
 	if (trunc(std::remainder(start, 2)) == 0) 
 		start += 1;

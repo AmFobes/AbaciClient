@@ -29,20 +29,30 @@ bool TDPrime::_isPrime(__m256d in, bool primes[])
 	__m256d highFactor = _hmax_pd(maxFactor);
 	__m256d minPrime = _hmin_pd(in);
 
-	if (highFactor.m256d_f64[0] >= minPrime.m256d_f64[0])
+	if (highFactor[0] >= minPrime[0])
 		return false;
-
-	for (__m256d factor = _mm256_set1_pd(2); ((double*)(&factor))[0] <= ((double*)(&highFactor))[0]; factor = _mm256_add_pd(factor, { 1,1,1,1 }))
+	
+	__m256d ones = _mm256_set_pd(1,1,1,1);
+	
+	for (__m256d factor = _mm256_set1_pd(2); factor[0] <= highFactor[0]; factor = _mm256_add_pd(factor, ones))
 	{
-		auto modres = _mm256_fmod_pd(in, factor);
+		
+		#ifdef WIN32
+		auto res = __mm256d_fmod_pd(in,factor);
+		#else
+		__m256d res = _mm256_div_pd(in,factor);
+		res = _mm256_round_pd(res,_MM_FROUND_TRUNC);
+		res = _mm256_mul_pd(res,factor);
+		res = _mm256_sub_pd(in,res);
+		#endif
 
-		if (modres.m256d_f64[0] == 0.0)
+		if (res[0] == 0.0)
 			primes[3] = false;
-		if (modres.m256d_f64[1] == 0.0)
+		if (res[1] == 0.0)
 			primes[2] = false;
-		if (modres.m256d_f64[2] == 0.0)
+		if (res[2] == 0.0)
 			primes[1] = false;
-		if (modres.m256d_f64[3] == 0.0)
+		if (res[3] == 0.0)
 			primes[0] = false;
 	}
 	return true;

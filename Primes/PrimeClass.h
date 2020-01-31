@@ -5,7 +5,7 @@
 #include <chrono>
 #include <immintrin.h>
 #include <iostream>
-
+#include <cstring> //memst
 #ifndef WIN32
 #define _aligned_malloc(size,alignment) aligned_alloc(alignment,size)
 #define _aligned_free(ptr) free(ptr)
