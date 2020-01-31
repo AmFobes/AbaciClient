@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget* parent) : ui(new Ui::MainWindow) {
 	connect(ui->chkShowPassword, &QCheckBox::clicked, this, &MainWindow::chkShowPasswordClicked);
 	connect(ui->btnClearConnectionLog, &QCheckBox::clicked, this, &MainWindow::btnClearConLog);
 	connect(ui->chkautoReqWork, &QCheckBox::clicked, this, &MainWindow::chkAutoReqWorkClicked);
-	connect(ui->numRequest, qOverload<int>(&QSpinBox::valueChanged), this, &MainWindow::numReqUpdated);
+	connect(ui->numRequest, QOverload<int>::of(QSpinBox::valueChanged), this, &MainWindow::numReqUpdated);
 	abaciWorker = new WorkerThread();
 	QThread* abaciWorkerThread = new QThread();
 	abaciWorker->moveToThread(abaciWorkerThread);
