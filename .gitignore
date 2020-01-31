@@ -55,7 +55,7 @@ build/*
 build/
 out
 out/
-
+Abaci_Client_autogen
 ### CMake Patch ###
 # External projects
 *-prefix/
